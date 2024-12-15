@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product details</title>
+    <style>
+        
+        .product-item{
+            padding: 15px;
+            margin-bottom: 15px;
+            margin-left: 20px;
+            width: 30%;
+            box-shadow:  5px 10px 10px goldenrod;
+            border: 2px solid rgb(250, 250, 137);
+            text-align: center;
+            
+        }
+        .product-item .product-image{
+            width: 230px;
+            height: 220px;
+            border: 2px solid black;
+            border-radius: 5%;
+            margin-bottom: 5px;
+        }
+        
+        
+    
+    </style>
+</head>
+<link rel="stylesheet" href="/CSS/navbar.css">
+<link rel="stylesheet" href="/CSS/product-list-button.css">
+<body>
+    
+    {{>navbar}}
+
+<div class="product-item">
+    <img class="product-image" src={{product.imageUrl}}> <br>
+    <h3> Product name : {{product.Name}}</h3>
+    <h3> Product price: {{product.Price}}</h3>
+    <h3> Product description : {{product.Description}}</h3>
+    <h3> Product seller : {{product.Seller}}</h3>
+    <h4>Reviews:</h4>
+    <ul>
+        {{#each product.review as |r|}}
+        <li>{{r}}</li>
+        {{/each}}
+    </ul>
+
+        <div class="button-group">
+            <a href="/shop/cart/add/{{product._id}}">
+                <button > Add To Cart🛒 </button>
+            </a>
+            <a href="#">
+                <button > Buy Now🛍️ </button>
+            </a>
+        </div>
+</div>
+            
+
+
+</body>
+</html>

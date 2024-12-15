@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Product List </title>
+    <style>
+        .product-list{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .product-item{
+            padding: 5px;
+            margin-bottom: 15px;
+            box-shadow:  5px 10px 10px goldenrod;
+        }
+        .product-item .product-image{
+            width: 230px;
+            height: 220px;
+        }
+        .category {
+            width: 100%;
+        }
+        .key {
+            border-bottom: 2px solid yellow;
+            border-top: 2px solid yellow;
+            margin: 25px 15px;
+            font-size: 25px;
+            text-align: center;
+
+        }
+    
+    </style>
+    <link rel="stylesheet" href="/CSS/navbar.css">
+    <link rel="stylesheet" href="/CSS/product-list-button.css">
+</head>
+<body>
+
+    {{>navbar}}
+
+    <div class="category">
+    {{#each products as |category| }}
+        <div class="key">{{@key}}</div>
+        <div class="product-list">
+            {{#each category as |p| }}
+                <div class="product-item">
+                    <img class="product-image" src={{p.imageUrl}}> <br>
+                    <h3> Product name : {{p.Name}}</h3>
+                    <h3> Product price: {{p.Price}}</h3>
+                    {{!-- <h3> Product description : {{p.Description}}</h3>
+                    <h3> Product seller : {{p.Seller}}</h3> --}}
+                    <div class="button-group">
+                        <a href="/admin/products/update/{{p._id}}">
+                            <button> Edit✏️</button>
+                        </a>
+                        <a href="/admin/products/delete/{{p._id}}">
+                            <button> Delete❌</button>
+                        </a>
+                    </div>
+                </div>
+            {{/each }}
+        </div>
+    {{/each }}
+    </div>
+
+</body>
+</html>
+

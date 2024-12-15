@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <style>
+        input{
+            width: 300px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button{
+            border-radius: 10%;
+            background-color: white;
+            color: black;
+            margin-left: 5px;
+            padding: 2px;
+        }
+
+        img{
+            width: 220px;
+            height: 200px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/CSS/navbar.css">
+
+</head>
+<body>
+
+    {{> navbar}}
+    <h1>Update Products Here </h1>
+
+    <img src={{product.imageUrl}} alt="Product Image">
+
+    <form action="/admin/products/update" method="POST" > {{!-- </form> --}}
+        <input type="text" name="Name" placeholder="Enter Product Name" value={{product.Name}}> <br>
+        <input type="text" name="Description" placeholder="Enter Product Description" value={{product.Description}}> <br>
+        <input type="text" name="Seller" placeholder="Enter Product Seller" value={{product.Seller}}> <br>
+        <input type="number" name="Price" placeholder="Enter Product Price" value={{product.Price}}> <br>
+        <input type="text" name="imageUrl" placeholder="Enter Product Image" value={{product.imageUrl}}> <br>
+        <input type="hidden" name="id"  value={{product._id}}> 
+
+        <button type="submit" >Submit</button> 
+    </form>
+    
+</body>
+</html>

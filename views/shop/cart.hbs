@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .item-image{
+            width: 210px;
+            height: 230px;
+            border: 2px dotted purple;
+            border-radius: 5%;
+        }
+
+        .cart-list{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .list-item{
+            margin: 15px 25px;
+            border: 2px dotted rebeccapurple;
+            padding: 6px;
+            border-radius: 5%;
+        }
+        .buyNowBtn{
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<link rel="stylesheet" href="/CSS/navbar.css">
+<body>
+    {{>navbar}}
+
+    <h1>🔻Products You Selected for Purchase🔻</h1>
+
+    
+    <span class="totalPrice" >
+        Total Price: {{totalPrice}}
+    </span>
+
+    <ul class="cart-list">
+            {{#each cart as |c|}}
+                <li class="list-item">
+                    <div>
+                        <img class="item-image" src={{c.id.imageUrl}} alt="Product Image">
+                    </div>
+                    <div>
+                        <p>Name: {{c.id.Name}}</p>
+                        <p>Price: {{c.id.Price}}</p>
+                        <div>Quantity: 
+                            <a href="/shop/cart/increase/{{c.id._id}}">
+                                <button class="increaseQuantity">➕</button>
+                            </a> 
+                            {{c.quantity}} 
+                            <a href="/shop/cart/decrease/{{c.id._id}}">
+                                <button class="decreaseQuantity">➖</button> 
+                            </a>
+
+                            <div id={{c.id._id}}> </div>
+
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+    </ul>
+
+    <a href="/shop/cart/buy">
+        <button class="buyNowBtn">
+            Buy Now
+        </button>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/JS/cart.js"></script>
+</body>
+</html>
